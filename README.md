@@ -1,6 +1,8 @@
 # EXP-03-Implement-Breadth-First-Search-Traversal-of-a-Graph
 Breadth First Search Traversal of a Graph
 
+# NAME:HARSHADA P K
+# REG NO:212224060097
 
 AIM: 
 Theory: 
@@ -69,56 +71,78 @@ Algorithm:
 4. Find its Successors Or neighbors and Check whether the node is visited or not. 
 5. If Not Visited, add it to the Queue. Else Continue. 
 6. Iterate steps 4 and 5 until all nodes get visited, and there are no more unvisited nodes. 
-Program: 
-from collections import deque 
-from collections import defaultdict 
-''' 
-V E 
-FOR EVERY EDGE 
-U V 
-7 9 
-A B 
-A C  
-A F 
-C E 
-C F 
-C D 
-D E  
-D G 
-G F 
-''' 
-def bfs(graph,start,visited,path): 
-queue = deque() 
-path.append(start) 
-queue.append(start) 
-visited[start] = True 
-while len(queue) != 0: 
-tmpnode = queue.popleft() 
-for neighbour in graph[tmpnode]: 
-if visited[neighbour] == False: 
-path.append(neighbour) 
-queue.append(neighbour) 
-visited[neighbour] = True 
-return path 
-graph = defaultdict(list) 
-v,e = map(int,input().split()) 
-for i in range(e): 
-u,v = map(str,input().split()) 
-graph[u].append(v) 
-graph[v].append(u) 
-start = '0' 
-#start=’A’ 
-path = [] 
-visited = defaultdict(bool) 
-traversedpath = bfs(graph,start,visited,path) 
-print(traversedpath) 
-Sample Input : 
-5 6 
-0 1 
-0 2 
-1 2 
-1 3 
-2 4 
-3 4 
-Sample Output: 
-['0', '1', '2', '3', '4'] 
+
+# PROGRAM
+```
+from collections import deque
+from collections import defaultdict
+
+def bfs(graph,start,visited,path):
+    queue = deque()
+    path.append(start)
+    queue.append(start)
+    visited[start] = True
+    while len(queue) != 0:
+        tmpnode = queue.popleft()
+        for neighbour in graph[tmpnode]:
+            if visited[neighbour] == False:
+                path.append(neighbour)
+                queue.append(neighbour)
+                visited[neighbour] = True
+    return path
+
+graph = defaultdict(list)
+v,e = map(int,input().split())
+for i in range(e):
+    u,v = map(str,input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+
+if '0' in graph:
+    start = '0'
+else:
+    start = 'A'
+path = []
+visited = defaultdict(bool)
+traversedpath = bfs(graph,start,visited,path)
+print(traversedpath)
+```
+# SAMPLE INPUT
+
+7 9
+A B
+A C
+A F
+C E
+C F
+C D
+D E
+D G
+G F
+
+# Sample Output
+
+['A', 'B', 'C', 'F', 'E', 'D', 'G']
+
+# OUTPUT
+
+<img width="539" height="297" alt="image" src="https://github.com/user-attachments/assets/d5f0547b-eca4-4266-b42c-f0434adb749c" />
+
+# Sample Input
+
+5 6
+0 1
+0 2
+1 2
+1 3
+2 4
+3 4
+# Output
+
+<img width="575" height="221" alt="image" src="https://github.com/user-attachments/assets/917c947c-d72e-4621-a7d1-f6d95b09c19e" />
+
+# RESULT
+
+Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.
+
+
